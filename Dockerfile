@@ -1,11 +1,11 @@
 FROM n8nio/n8n:latest
 
-# Указываем рабочую директорию
-WORKDIR /data
+# Не трогаем WORKDIR — он уже правильно установлен
+# Не переопределяем ENTRYPOINT — он уже корректный
+# Оставляем CMD как есть
 
-# Порт, который будет слушать n8n
+# Настройки для Koyeb
+ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+ENV N8N_PORT=5678
+
 EXPOSE 5678
-
-# Запуск n8n
-CMD ["n8n"]
-
